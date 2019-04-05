@@ -35,11 +35,16 @@ public class CreateArtController {
 
     @RequestMapping("/upload")
     public String upload(Model model, @RequestParam("image")MultipartFile[] files) throws IOException {
-        byte[] fileContent = files[0].getBytes();
-        String encodedString = Base64.getEncoder().encodeToString(fileContent);
 
-        byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
-        FileUtils.writeByteArrayToFile(new File(files[0].getOriginalFilename()), decodedBytes);
+
+        byte[] imageFileContent = files[0].getBytes();
+        String imageEncodedString = Base64.getEncoder().encodeToString(imageFileContent);
+
+        byte[] styleFileContent = files[1].getBytes();
+        String styleEncodedString = Base64.getEncoder().encodeToString(styleFileContent);
+
+        //byte[] decodedBytes = Base64.getDecoder().decode(imageEncodedString);
+        //FileUtils.writeByteArrayToFile(new File(files[0].getOriginalFilename()), decodedBytes);
         //String name = files[0].getOriginalFilename();
         //name = files[1].getOriginalFilename();
 
@@ -47,7 +52,7 @@ public class CreateArtController {
         HttpClient httpClient = new DefaultHttpClient();
         try {
             HttpPost request = new HttpPost("http://127.0.0.1:5000/submit_image/123");
-            StringEntity params = new StringEntity("{\"image\":\"" + encodedString + "\",\"style\":\""+encodedString +"\"}");
+            StringEntity params = new StringEntity("{\"image\":\"" + imageEncodedString + "\",\"style\":\""+styleEncodedString +"\"}");
             request.addHeader("content-type", "application/json");
             request.addHeader("Accept","application/json");
             request.setEntity(params);
