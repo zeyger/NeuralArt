@@ -1,19 +1,20 @@
-package com.example.HelloWorld;
+package DAL;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
+import java.util.Collection;
 
 @Entity
-@Table(name = "users", schema = "neuralart_db", catalog = "")
+@Table(name = "users", schema = "neuralart_db")
 public class UsersEntity {
     private int id;
     private String email;
     private String password;
     private byte defaultPrivate;
-   // private Collection<ResultImagesEntity> resultImagesById;
+   private Collection<ResultImagesEntity> resultImagesById;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -68,7 +69,7 @@ public class UsersEntity {
     public int hashCode() {
         return Objects.hash(id, email, password, defaultPrivate);
     }
-/*
+
     @OneToMany(mappedBy = "usersByUser")
     public Collection<ResultImagesEntity> getResultImagesById() {
         return resultImagesById;
@@ -76,5 +77,5 @@ public class UsersEntity {
 
     public void setResultImagesById(Collection<ResultImagesEntity> resultImagesById) {
         this.resultImagesById = resultImagesById;
-    }*/
+    }
 }

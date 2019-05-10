@@ -1,26 +1,22 @@
-package com.example.HelloWorld;
+package DAL;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "result_images", schema = "neuralart_db", catalog = "")
+@Table(name = "result_images", schema = "neuralart_db")
 public class ResultImagesEntity {
     private int id;
     private byte private_status;
     private java.util.Date creationDate;
     private OriginalImagesEntity originalImagesByOriginalImage;
     private ContextImagesEntity contextImagesByContextImage;
-   // private int originalImage;
-   // private int contextImage;
-    private int user;
-    private byte privateStatus;
     private Collection<ImageEmotionsEntity> imageEmotionsById;
     private UsersEntity usersByUser;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -67,7 +63,7 @@ public class ResultImagesEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "original_image", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "original_image", referencedColumnName = "id")
     public OriginalImagesEntity getOriginalImagesByOriginalImage() {
         return originalImagesByOriginalImage;
     }
@@ -77,53 +73,13 @@ public class ResultImagesEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "context_image", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "context_image", referencedColumnName = "id")
     public ContextImagesEntity getContextImagesByContextImage() {
         return contextImagesByContextImage;
     }
 
     public void setContextImagesByContextImage(ContextImagesEntity contextImagesByContextImage) {
         this.contextImagesByContextImage = contextImagesByContextImage;
-    }
-/*
-    @Basic
-    @Column(name = "original_image", nullable = false, insertable = false , updatable = false)
-    public int getOriginalImage() {
-        return originalImage;
-    }
-
-    public void setOriginalImage(int originalImage) {
-        this.originalImage = originalImage;
-    }
-
-    @Basic
-    @Column(name = "context_image", nullable = false , insertable = false , updatable = false)
-    public int getContextImage() {
-        return contextImage;
-    }
-
-    public void setContextImage(int contextImage) {
-        this.contextImage = contextImage;
-    }
-*/
-    @Basic
-    @Column(name = "user", nullable = false, insertable = false , updatable = false)
-    public int getUser() {
-        return user;
-    }
-
-    public void setUser(int user) {
-        this.user = user;
-    }
-
-    @Basic
-    @Column(name = "private", nullable = false, insertable = false , updatable = false)
-    public byte getPrivateStatus() {
-        return privateStatus;
-    }
-
-    public void setPrivateStatus(byte privateStatus) {
-        this.privateStatus = privateStatus;
     }
 
     @OneToMany(mappedBy = "resultImagesByImage")
@@ -136,7 +92,7 @@ public class ResultImagesEntity {
     }
 
  @ManyToOne
-    @JoinColumn(name = "user", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "user", referencedColumnName = "id")
     public UsersEntity getUsersByUser() {
         return usersByUser;
     }

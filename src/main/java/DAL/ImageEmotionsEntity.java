@@ -1,10 +1,10 @@
-package com.example.HelloWorld;
+package DAL;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "image_emotions", schema = "neuralart_db", catalog = "")
+@Table(name = "image_emotions", schema = "neuralart_db")
 public class ImageEmotionsEntity {
     private int id;
     private int artisticCount;
@@ -13,10 +13,10 @@ public class ImageEmotionsEntity {
     private int scaryCount;
     private int sadCount;
     private int uglyCount;
-    private int image;
     private ResultImagesEntity resultImagesByImage;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -103,16 +103,6 @@ public class ImageEmotionsEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, artisticCount, beautifulCount, funnyCount, scaryCount, sadCount, uglyCount);
-    }
-
-    @Basic
-    @Column(name = "image", nullable = false, insertable = false , updatable = false)
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
     }
 
     @ManyToOne

@@ -1,4 +1,4 @@
-package com.example.HelloWorld;
+package DAL;
 
 import javax.persistence.*;
 import java.util.Arrays;
@@ -6,13 +6,14 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "original_images", schema = "neuralart_db", catalog = "")
-public class OriginalImagesEntity {
+@Table(name = "context_images", schema = "neuralart_db")
+public class ContextImagesEntity {
     private int id;
     private byte[] image;
     private Collection<ResultImagesEntity> resultImagesById;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -36,7 +37,7 @@ public class OriginalImagesEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OriginalImagesEntity that = (OriginalImagesEntity) o;
+        ContextImagesEntity that = (ContextImagesEntity) o;
         return id == that.id &&
                 Arrays.equals(image, that.image);
     }
@@ -48,7 +49,7 @@ public class OriginalImagesEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "originalImagesByOriginalImage")
+    @OneToMany(mappedBy = "contextImagesByContextImage")
     public Collection<ResultImagesEntity> getResultImagesById() {
         return resultImagesById;
     }
