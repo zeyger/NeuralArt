@@ -2,9 +2,7 @@ package com.example.HelloWorld;
 
 
 import org.apache.commons.io.FileUtils;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 
 
 
@@ -48,7 +40,7 @@ public class CreateArtController {
         //String name = files[0].getOriginalFilename();
         //name = files[1].getOriginalFilename();
 
-
+        /*
         HttpClient httpClient = new DefaultHttpClient();
         try {
             HttpPost request = new HttpPost("http://127.0.0.1:5000/submit_image/123");
@@ -64,7 +56,7 @@ public class CreateArtController {
         } finally {
             httpClient.getConnectionManager().shutdown();
         }
-
+    */
 
         return "uploadview";
     }
