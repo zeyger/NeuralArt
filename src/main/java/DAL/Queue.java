@@ -4,7 +4,8 @@ import redis.clients.jedis.Jedis;
 
 import java.util.List;
 
-/** This class implements data access to two queues:
+/**
+ * This class implements data access to two queues:
  * Pending, the queue where pending jobs (images) are sent to be taken by  workers
  * And Result, where resulting images are sent from workers
  */
