@@ -17,7 +17,7 @@ public class GreetingController {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-    /*    UsersEntity UsersEntity = new UsersEntity();
+        UsersEntity UsersEntity = new UsersEntity();
         //UsersEntity.setId(1);
         UsersEntity.setEmail("vasyaPupkin@gmail.com");
         UsersEntity.setPassword("12345");
@@ -26,14 +26,8 @@ public class GreetingController {
         session.save(UsersEntity);
         session.getTransaction().commit();
 
-        session.close();*/
-        OriginalImagesEntity OriginalImagesEntity = new OriginalImagesEntity();
-        //UsersEntity.setId(1);
-        byte [] b = {1, 2 , 3};
-        OriginalImagesEntity.setImage(b);
+        session.close();
 
-        session.save(OriginalImagesEntity);
-        session.getTransaction().commit();
         return "greeting";
     }
 
