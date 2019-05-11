@@ -8,14 +8,13 @@ import com.google.gson.Gson;
 import java.util.Base64;
 
 public class JobEncoderDecoder {
+    private static Gson gson = new Gson();
     /**
      * @param jobId        - number of job
      * @param contentImage - Content image, bytes
      * @param styleImage   - Style image, bytes
      * @return Json serialized with same fields as input, but in BASE64(except for jobId)
      */
-    private static Gson gson = new Gson();
-
     public static String encode(int jobId, byte[] contentImage, byte[] styleImage) {
         String contentImageBase64 = Base64.getEncoder().encodeToString(contentImage);
         String styleImageBase64 = Base64.getEncoder().encodeToString(styleImage);
