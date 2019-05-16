@@ -6,13 +6,14 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/neuralart_db?serverTimezone=UTC</property>
     <property name="connection.username">root</property>
-    <property name="connection.password">admin</property>
+    <property name="connection.password">Rfhtkjd123</property>
     <property name="show_sql">true</property>
-    <mapping class="DAL.ContextImagesEntity"/>
-    <mapping class="DAL.ImageEmotionsEntity"/>
-    <mapping class="DAL.OriginalImagesEntity"/>
-    <mapping class="DAL.ResultImagesEntity"/>
-    <mapping class="DAL.UsersEntity"/>
+    <property name="hbm2ddl.auto">update</property>
+    <mapping class="ru.sstu.se20.DAL.ContextImagesEntity"/>
+    <mapping class="ru.sstu.se20.DAL.ImageEmotionsEntity"/>
+    <mapping class="ru.sstu.se20.DAL.OriginalImagesEntity"/>
+    <mapping class="ru.sstu.se20.DAL.ResultImagesEntity"/>
+    <mapping class="ru.sstu.se20.DAL.UsersEntity"/>
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
