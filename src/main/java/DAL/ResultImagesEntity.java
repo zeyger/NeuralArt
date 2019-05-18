@@ -28,7 +28,7 @@ public class ResultImagesEntity {
     }
 
     @Basic
-    @Column(name = "image")
+    @Column(name = "result_image")
     public byte[] getImage() {
         return image;
     }
