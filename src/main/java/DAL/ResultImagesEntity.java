@@ -8,12 +8,13 @@ import java.util.Objects;
 @Table(name = "result_images", schema = "neuralart_db")
 public class ResultImagesEntity {
     private int id;
-    private byte private_status;
+    private byte privateStatus;
     private java.util.Date creationDate;
     private OriginalImagesEntity originalImagesByOriginalImage;
     private ContextImagesEntity contextImagesByContextImage;
     private Collection<ImageEmotionsEntity> imageEmotionsById;
     private UsersEntity usersByUser;
+    private byte[] resultImage;
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -27,13 +28,23 @@ public class ResultImagesEntity {
     }
 
     @Basic
-    @Column(name = "private", nullable = false)
-    public byte getPrivate_status() {
-        return private_status;
+    @Column(name = "result_image")
+    public byte[] getResultImage() {
+        return resultImage;
     }
 
-    public void setPrivate_status(byte private_status) {
-        this.private_status = private_status;
+    public void setResultImage(byte[] resultImage) {
+        this.resultImage = resultImage;
+    }
+
+    @Basic
+    @Column(name = "private", nullable = false)
+    public byte getPrivateStatus() {
+        return privateStatus;
+    }
+
+    public void setPrivateStatus(byte privateStatus) {
+        this.privateStatus = privateStatus;
     }
 
     @Temporal(TemporalType.DATE)
@@ -53,13 +64,13 @@ public class ResultImagesEntity {
         if (o == null || getClass() != o.getClass()) return false;
         ResultImagesEntity that = (ResultImagesEntity) o;
         return id == that.id &&
-                private_status == that.private_status &&
+                privateStatus == that.privateStatus &&
                 Objects.equals(creationDate, that.creationDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, private_status, creationDate);
+        return Objects.hash(id, privateStatus, creationDate);
     }
 
     @ManyToOne

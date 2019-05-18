@@ -24,7 +24,7 @@ public class ContextImagesEntity {
     }
 
     @Basic
-    @Column(name = "image", nullable = false)
+    @Column(name = "image")
     public byte[] getImage() {
         return image;
     }
