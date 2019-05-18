@@ -62,6 +62,7 @@ public class GreetingController {
         ResultImagesEntity.setCreationDate(date);
         ResultImagesEntity.setUsersByUser(UsersEntity);
         ResultImagesEntity.setPrivate_status((byte)1);
+        ResultImagesEntity.setImage(b);
 
         session2.save(ResultImagesEntity);
 

@@ -14,6 +14,7 @@ public class ResultImagesEntity {
     private ContextImagesEntity contextImagesByContextImage;
     private Collection<ImageEmotionsEntity> imageEmotionsById;
     private UsersEntity usersByUser;
+    private byte[] image;
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -24,6 +25,16 @@ public class ResultImagesEntity {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Basic
+    @Column(name = "image")
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     @Basic
