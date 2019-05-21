@@ -1,0 +1,183 @@
+/* CSS Document */
+<style>
+/*Style Header*/
+/*.Menu 
+{position: absolute;
+left: 0%;
+right: -0.01%;
+top: 0%;
+bottom: 93.09%;}
+.Auth 
+{position: absolute;
+left: 81.47%;
+right: 0%;
+top: 0.65%;
+bottom: 93.09%;}
+.YourDownloads
+{position: absolute;
+height: 27px;
+left: 552px;
+right: 574px;
+top: 0px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 32px;
+line-height: 37px;
+
+color: #FFFFFF;}
+.CreateButtonMenu 
+{position: absolute;
+height: 43px;
+left: 356px;
+right: 872px;
+top: 0px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 32px;
+line-height: 37px;
+text-decoration-line: underline;
+
+color: #FFFFFF;}
+.Gallery
+{position: absolute;
+height: 36px;
+left: 160px;
+right: 1080px;
+top: 0px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 32px;
+line-height: 37px;
+
+color: #FFFFFF;}
+.MainMenu
+{position: absolute;
+height: 48.73px;
+left: 0px;
+right: -0.12px;
+top: 0px;
+
+background: #64CEC1;}*/
+/*Body Style*/
+.CreateBody
+{position: relative;
+width: 1365px;
+height: 767px;
+
+background: #FFFFFF;}
+.CreateGroup
+{
+    margin-left: auto;
+    margin-right: auto;
+width: 1237.49px;
+height: 467px;
+/*left: 64px;*/
+top: 114px;}
+.ImageHeader
+{position: absolute;
+width: 589.49px;
+height: 74.67px;
+left: 4.69%;
+top: 180px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 28px;
+line-height: 33px;
+
+color: #15A08F;}
+.StyleHeader
+{position: absolute;
+width: 506.96px;
+height: 74.67px;
+left: 52.16%;
+top: 180px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 28px;
+line-height: 33px;
+
+color: #15A08F;}
+.OriginalImage
+{position: absolute;
+left: 4.69%;
+right: 52.12%;
+top: 22.4%;
+height: 300px;
+
+background: #FCFCFC;
+border: 1px solid #9A9A9A;
+box-sizing: border-box;}
+.ContentImage
+{position: absolute;
+left: 52.16%;
+right: 4.65%;
+top: 22.29%;
+height: 300px;
+
+background: #D8D8D8;
+border: 1px solid #9A9A9A;
+box-sizing: border-box;}
+/*.StyleInscription
+{position: absolute;
+width: 558.05px;
+height: 273.13px;
+left: 728.16px;
+top: 285.78px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+text-align: center;
+
+color: #FFFFFF;}
+.Image
+{position: absolute;
+left: 17.21%;
+right: 66.52%;
+top: 28.04%;
+bottom: 42.76%;
+
+background: url(image.png);}*/
+/*Button style*/
+.MainCreateButton
+{position: absolute;
+width: 330px;
+height: 45px;
+left: 42%;
+top: 666px;}
+.CreateButton
+{position: absolute;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 28px;
+line-height: 33px;
+text-align: center;
+
+color: #2BBDAB;}
+/*.LabelCreateButton
+{position: absolute;
+left: 40.15%;
+right: 40.07%;
+top: 69.88%;
+bottom: 24.25%;
+
+
+background: #ECF9F9;
+border: 1px solid #2BBDAB;
+box-sizing: border-box;
+border-radius: 40px;}*/
+</style>
