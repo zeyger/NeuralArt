@@ -28,7 +28,7 @@ public class ResultImagesEntity {
     }
 
     @Basic
-    @Column(name = "result_image")
+    @Column(name = "result_image", columnDefinition = "MEDIUMBLOB")
     public byte[] getResultImage() {
         return resultImage;
     }
