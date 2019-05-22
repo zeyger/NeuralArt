@@ -12,7 +12,11 @@ import common.JobEncoderDecoder;
 import org.hibernate.Session;
 import java.util.Date;
 import java.io.IOException;
+import java.util.UUID;
+
 import DAL.Queue;
+
+import javax.servlet.http.Cookie;
 
 @Controller
 public class CreateArtController {
@@ -50,9 +54,11 @@ public class CreateArtController {
         Session sessions = HibernateUtil.getSessionFactory().openSession();
         sessions.beginTransaction();
         UsersEntity UsersEntity = new UsersEntity();
-        UsersEntity.setEmail("vasyaPupkin@gmail.com");
-        UsersEntity.setPassword("12345");
-        UsersEntity.setDefaultPrivate((byte)1);
+        Cookie cookieName = new Cookie("neuralartId", UUID.randomUUID().toString());
+        String cookie = cookieName.toString();
+        Date cookieDate = new Date();
+        UsersEntity.setCookie(cookie);
+        UsersEntity.setCookieCreationDate(cookieDate);
         sessions.save(UsersEntity);
         sessions.getTransaction().commit();
         sessions.close();

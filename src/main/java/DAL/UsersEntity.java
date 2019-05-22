@@ -8,9 +8,8 @@ import java.util.Collection;
 @Table(name = "users", schema = "neuralart_db")
 public class UsersEntity {
     private int id;
-    private String email;
-    private String password;
-    private byte defaultPrivate;
+    private String cookie;
+    private java.util.Date cookieCreationDate;
    private Collection<ResultImagesEntity> resultImagesById;
 
     @Id
@@ -25,33 +24,23 @@ public class UsersEntity {
     }
 
     @Basic
-    @Column(name = "email", nullable = false, length = 100)
-    public String getEmail() {
-        return email;
+    @Column(name = "cookie", nullable = false, length = 100)
+    public String getCookie() {
+        return cookie;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCookie(String cookie) {
+        this.cookie = cookie;
     }
 
-    @Basic
-    @Column(name = "password", nullable = false, length = 100)
-    public String getPassword() {
-        return password;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "cookieCreationDate", nullable = true)
+    public java.util.Date getCookieCreationDate() {
+        return cookieCreationDate;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Basic
-    @Column(name = "default_private", nullable = false)
-    public byte getDefaultPrivate() {
-        return defaultPrivate;
-    }
-
-    public void setDefaultPrivate(byte defaultPrivate) {
-        this.defaultPrivate = defaultPrivate;
+    public void setCookieCreationDate(java.util.Date cookieCreationDate) {
+        this.cookieCreationDate = cookieCreationDate;
     }
 
     @Override
@@ -60,14 +49,13 @@ public class UsersEntity {
         if (o == null || getClass() != o.getClass()) return false;
         UsersEntity that = (UsersEntity) o;
         return id == that.id &&
-                defaultPrivate == that.defaultPrivate &&
-                Objects.equals(email, that.email) &&
-                Objects.equals(password, that.password);
+                Objects.equals(cookie, that.cookie) &&
+                Objects.equals(cookieCreationDate, that.cookieCreationDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, password, defaultPrivate);
+        return Objects.hash(id, cookie, cookieCreationDate);
     }
 
     @OneToMany(mappedBy = "usersByUser")

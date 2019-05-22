@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.hibernate.Session;
+import javax.servlet.http.Cookie;
+import java.util.UUID;
 
 import java.util.Date;
 
@@ -46,9 +48,11 @@ public class GreetingController {
         session.save(OriginalImagesEntity);
 
         UsersEntity UsersEntity = new UsersEntity();
-        UsersEntity.setEmail("vasyaPupkin@gmail.com");
-        UsersEntity.setPassword("12345");
-        UsersEntity.setDefaultPrivate((byte)1);
+        Cookie cookieName = new Cookie("neuralartId", UUID.randomUUID().toString());
+        String cookie = cookieName.toString();
+        Date cookieDate = new Date();
+        UsersEntity.setCookie(cookie);
+        UsersEntity.setCookieCreationDate(cookieDate);
         session.save(UsersEntity);
         session.getTransaction().commit();
         session.close();
