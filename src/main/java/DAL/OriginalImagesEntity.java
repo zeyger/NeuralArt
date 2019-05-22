@@ -24,7 +24,7 @@ public class OriginalImagesEntity {
     }
 
     @Basic
-    @Column(name = "image")
+    @Column(name = "image", columnDefinition = "MEDIUMBLOB")
     public byte[] getImage() {
         return image;
     }
