@@ -31,15 +31,6 @@ public class CreateArtController {
 
     @RequestMapping("/upload")
     public String upload(Model model, @RequestParam("image")MultipartFile[] files, @CookieValue(value = "neuralartId", required = false) Cookie cookieName, HttpServletResponse response) throws IOException {
-        /*public String getArts(Model model, @CookieValue(value = "neuralartId", required = false)
-            Cookie cookieName, HttpServletResponse response)
-        {
-            if (cookieName == null) {
-                cookieName = new Cookie("neuralartId", UUID.randomUUID().toString());
-                response.addCookie(cookieName);
-            }
-            return
-        }*/
 
         //Image conversion to binary code
         byte[] imageFileContent = files[0].getBytes();
