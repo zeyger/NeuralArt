@@ -36,6 +36,7 @@ public class CreateArtController {
         byte[] imageFileContent = files[0].getBytes();
         byte[] styleFileContent = files[1].getBytes();
 
+        //Creating cookies when they are missing
         if (cookieName == null) {
             cookieName = new Cookie("neuralartId", UUID.randomUUID().toString());
             response.addCookie(cookieName);
