@@ -4,19 +4,43 @@
 	<link rel="stylesheet" href="style.css">
 <meta charset="utf-8">
 <title>Создание работы</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<div class="CreateGroup">
-		<h4 class="ImageHeader">Исходное изображение:</h4>
-		<h4 class="StyleHeader">Контентное изображение:</h4>
-		<div class="OriginalImage"></div>
-		<div class="ContentImage"></div>
-		<div class="MainCreateButton">
-		<button class="CreateButton">
-			Создать работу
-		</button>
-			<div>
+	<div class="Body">
+	<div class="container-fluid">
+		<div class="row">
+		<div class="col-md-6"><h4 class="ImageHeader">Исходное изображение:</h4><p>
+		<div class="OriginalImage">
+<form id="upload-container">
+          <img id="upload-image" src="images/upload.png">
+          <div>
+               <input id="file-input" type="file" name="file" multiple>
+               <label for="file-input">Выберите файл</label>
+          </div>
+     </form>
+			</div></div>
+		<div class="col-md-6"><h4 class="ImageHeader">Контентное изображение:</h4><p>
+		<div class="ContentImage">
+			
+<form id="upload-container2"  >
+          <img  id="upload-image" src="images/upload.png">
+          <div>
+               <input id="file-input" type="file" name="file" multiple>
+               <label for="file-input">Выберите файл</label>
+          </div>
+     </form></div></div>
 		</div>
+		</div>
+		<div class="MainCreateButton">
+		<input type="submit" value="Создать работу" class="CreateButton">
+		</div>
+		</div>
+	<script>
+	</script>
+	
+	
 </body>
 </html>
