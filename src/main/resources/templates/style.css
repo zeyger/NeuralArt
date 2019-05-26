@@ -120,6 +120,9 @@ bottom: 42.76%;
 
 background: url(image.png);}*/
 /*Button style*/
+input {
+  display: none;
+}
 .CreateButton
 {
 font-family: Roboto;
@@ -130,9 +133,9 @@ line-height: 33px;
 text-align: center;
 
 color: #2BBDAB;
-margin-left: 34px;
 margin-bottom: 40px;
-margin-top: 40px;}
+margin-top: 40px;
+display: inline;}
 /*.LabelCreateButton
 {position: absolute;
 left: 40.15%;
@@ -250,6 +253,24 @@ border-radius: 40px;}*/
 	background-color: #fafafa;
 	outline-offset: -17px;
 }
+
+.BoxLabel {
+position: absolute;
+  display: inline-block;
+  height: 274px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+	margin: 12px;
+  right: 36px;
+  left: 36px;
+}
+
+.BoxLabel:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
 
 
 

@@ -6,6 +6,8 @@
 <title>Создание работы</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script> 
 </head>
 
 <body>
@@ -14,33 +16,54 @@
 		<div class="row">
 		<div class="col-md-6"><h4 class="ImageHeader">Исходное изображение:</h4><p>
 		<div class="OriginalImage">
+	<label class="BoxLabel" for=file-input1 id="labelimg"></label>
 <form id="upload-container">
-          <img id="upload-image" src="images/upload.png">
+          <img id="upload-image" src="images/upload.png" name="originalimg">
           <div>
-               <input id="file-input" type="file" name="file" multiple>
-               <!--<label for="file-input">Выберите файл</label>-->
+               <input id="file-input1" type="file" name="file" multiple>
           </div>
      </form>
 			</div></div>
 		<div class="col-md-6"><h4 class="ImageHeader">Контентное изображение:</h4><p>
 		<div class="ContentImage">
-			
+	<label class="BoxLabel" for=file-input2 id="labelstyle"></label>
 <form id="upload-container2"  >
           <img  id="upload-image" src="images/upload.png">
           <div>
-               <input id="file-input" type="file" name="file" multiple>
-               <!--<label for="file-input">Выберите файл</label>-->
+               <input id="file-input2" type="file" name="file" multiple>
           </div>
      </form></div></div>
 		</div>
 		</div>
-		<div class="MainCreateButton">
+		<div  class="text-center"> 
 		<input type="submit" value="Создать работу" class="CreateButton">
 		</div>
 		</div>
+	
 	<script>
+	document.querySelector("#file-input1").addEventListener("change", function () {
+  if (this.files[0]) {
+    var fr = new FileReader();
+
+    fr.addEventListener("load", function () {
+  document.querySelector("#labelimg").style.backgroundImage = "url(" + fr.result + ")";
+    }, false);
+
+    fr.readAsDataURL(this.files[0]);
+  }
+});
+		
+		document.querySelector("#file-input2").addEventListener("change", function () {
+  if (this.files[0]) {
+    var fr = new FileReader();
+
+    fr.addEventListener("load", function () {
+  document.querySelector("#labelstyle").style.backgroundImage = "url(" + fr.result + ")";
+    }, false);
+
+    fr.readAsDataURL(this.files[0]);
+  }
+});
 	</script>
-	
-	
 </body>
 </html>
