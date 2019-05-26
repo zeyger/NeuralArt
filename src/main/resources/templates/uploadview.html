@@ -1,19 +1,245 @@
-<!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+	<link rel="stylesheet" href="https://googledrive.com/host/19cw7hVm6UfOTTn3-lJOulKgEynxr_kTy/style.css">
+<meta charset="utf-8">
+<title>Создание работы</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<style>
+		.Body2
+		{}
+		.Body
+		{margin-top: 150px;}
+		.ImageHeader
+		{
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 26px;
+			line-height: 33px;
+			margin-left: 20px;
+			color: #15A08F;}
+		.OriginalImage
+		{
+			height: 300px;
+			margin-left: 20px;
+			margin-right: 20px;
+
+			background: #FCFCFC;
+			border: 1px solid #9A9A9A;
+			box-sizing: border-box;}
+		.ContentImage
+		{
+			height: 300px;
+			margin-left: 20px;
+			margin-right: 20px;
+
+			background: #D8D8D8;
+			border: 1px solid #9A9A9A;
+			box-sizing: border-box;}
+		.InscriptionBox
+		{position: absolute;
+			width: 100%;
+			height: 50%;
+			left: 728.16px;
+			top: 285.78px;
+
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 24px;
+			line-height: 28px;
+			text-align: center;
+
+			color: #FFFFFF;}
+		/*Button style*/
+		input {
+			display: none;
+		}
+		.CreateButton
+		{
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 28px;
+			line-height: 33px;
+			text-align: center;
+
+			color: #2BBDAB;
+			margin-bottom: 40px;
+			margin-top: 40px;
+			display: inline;}
+
+		/*Upload*/
+		#upload-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			width: 100%;
+			height: 100%;
+			outline: 2px dashed #5d5d5d;
+			outline-offset: -12px;
+			background-color: #FCFCFC;
+			font-family: 'Segoe UI';
+			color: #1f3c44;
+		}
+
+		#upload-container img {
+			width: 80px;
+			margin-bottom: 20px;
+			user-select: none;
+		}
+
+		#upload-container label {
+			font-weight: bold;
+		}
+
+		#upload-container label:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+
+		#upload-container div {
+			position: relative;
+			z-index: 10;
+		}
+
+		#upload-container label.focus {
+			outline: 1px solid #0078d7;
+			outline: -webkit-focus-ring-color auto 5px;
+		}
+
+		#upload-container.dragover {
+			background-color: #fafafa;
+			outline-offset: -17px;
+		}
+
+		#upload-container2 {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			width: 100%;
+			height: 100%;
+			outline: 2px dashed #5d5d5d;
+			outline-offset: -12px;
+			background-color: #D8D8D8;
+			font-family: 'Segoe UI';
+			color: #1f3c44;
+		}
+
+		#upload-container2 img {
+			width: 80px;
+			margin-bottom: 20px;
+			user-select: none;
+		}
+
+		#upload-container2 label {
+			font-weight: bold;
+		}
+
+		#upload-container2 label:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+
+		#upload-container2 div {
+			position: relative;
+			z-index: 10;
+		}
+
+		#upload-container2 label.focus {
+			outline: 1px solid #0078d7;
+			outline: -webkit-focus-ring-color auto 5px;
+		}
+
+		#upload-container2.dragover {
+			background-color: #fafafa;
+			outline-offset: -17px;
+		}
+
+		.BoxLabel {
+			position: absolute;
+			display: inline-block;
+			height: 274px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			margin: 12px;
+			right: 36px;
+			left: 36px;
+		}
+
+		.BoxLabel:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+	</style>
 </head>
+
 <body>
-
-
+	<div class="Body">
+	<div class="container-fluid">
 <form action="/upload" method="post" enctype="multipart/form-data">
-    <p>Контекст</p>
-    <input type="file" name="image"/>
-    <p>Стиль</p>
-    <input type="file" name="image"/>
-    <input type="submit" value="Upload image">
-</form>
+		<div class="row">
+		<div class="col-md-6"><h4 class="ImageHeader">Исходное изображение:</h4><p>
+		<div class="OriginalImage">
+	<label class="BoxLabel" for=file-input1 id="labelimg"></label>
+<div id="upload-container">
+          <img id="upload-image" src="https://i.ibb.co/VB2jXVn/Upload.png" name="originalimg">
+          <div>
+               <input id="file-input1" type="file" name="image" multiple>
+          </div>
+     </div>
+			</div></div>
+		<div class="col-md-6"><h4 class="ImageHeader">Контентное изображение:</h4><p>
+		<div class="ContentImage">
+	<label class="BoxLabel" for=file-input2 id="labelstyle"></label>
+<div id="upload-container2">
+          <img  id="upload-image" src="https://i.ibb.co/VB2jXVn/Upload.png">
+          <div>
+               <input id="file-input2" type="file" name="image" multiple>
+          </div>
+     </div>
+     </div></div>
+		</div>
+		</div>
+		<div  class="text-center">
+			
+		<input type="submit" value="Создать работу" class="CreateButton">
+				
+     </form>
+		</div>
+		</div>
+	
+	<script>
+	document.querySelector("#file-input1").addEventListener("change", function () {
+  if (this.files[0]) {
+    var fr = new FileReader();
 
+    fr.addEventListener("load", function () {
+  document.querySelector("#labelimg").style.backgroundImage = "url(" + fr.result + ")";
+    }, false);
+
+    fr.readAsDataURL(this.files[0]);
+  }
+});
+		
+		document.querySelector("#file-input2").addEventListener("change", function () {
+  if (this.files[0]) {
+    var fr = new FileReader();
+
+    fr.addEventListener("load", function () {
+  document.querySelector("#labelstyle").style.backgroundImage = "url(" + fr.result + ")";
+    }, false);
+
+    fr.readAsDataURL(this.files[0]);
+  }
+});
+	</script>
 </body>
 </html>
