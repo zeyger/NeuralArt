@@ -7,14 +7,9 @@ import org.hibernate.Query;
 import utils.HibernateUtil;
 import java.util.ArrayList;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class AbstractHibernateDAO <T extends Serializable> implements IOperations<T> {
     private Class<T> clazz;
-
-    @Autowired
-    private SessionFactory sessionFactory;
 
     protected final void setClazz(final Class<T> clazzToSet) {
         clazz = clazzToSet;
@@ -70,28 +65,18 @@ public abstract class AbstractHibernateDAO <T extends Serializable> implements I
     }
 
     @Override
-    public final void delete(final T entity) {
-
-        getCurrentSession().delete(entity);
-    }
-
-    @Override
     public final void deleteById(final int entityId) {
-        //final T entity = getById(entityId);
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        T del = (T) session.get(clazz, entityId);
-        session.delete(del);
+        T del = getById(entityId);
+        if (del != null)
+        {
+            session.delete(del);
+        }
+
         session.getTransaction().commit();
         if (session.isOpen()) {
             session.close();
         }
-       // Preconditions.checkState(entity != null);
-       // delete(entity);
     }
-
-    public final Session getCurrentSession() {
-        return sessionFactory.getCurrentSession();
-    }
-
 }
