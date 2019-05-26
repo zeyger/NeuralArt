@@ -1,7 +1,8 @@
 package com.example.HelloWorld;
 
+import DAL.Entities.*;
+import DAL.DAO.*;
 import utils.HibernateUtil;
-import DAL.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,9 +44,18 @@ public class GreetingController {
         ContextImagesEntity.setImage(b);
         session.save(ContextImagesEntity);
 
+    //    session = HibernateUtil.getSessionFactory().openSession();
         OriginalImagesEntity OriginalImagesEntity = new OriginalImagesEntity();
+        AbstractHibernateDAO DAO = new OriginalImagesDAO();
+      //  session.getCurrentSession();
         OriginalImagesEntity.setImage(b);
-        session.save(OriginalImagesEntity);
+       // session.save(OriginalImagesEntity);
+        DAO.create(OriginalImagesEntity);
+        /**/
+        //DAO.deleteById(6);
+
+        DAO = new UsersDAO();
+        DAO.deleteById(10);
 
         UsersEntity UsersEntity = new UsersEntity();
         Cookie cookieName = new Cookie("neuralartId", UUID.randomUUID().toString());

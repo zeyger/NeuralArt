@@ -1,11 +1,12 @@
-package DAL;
+package DAL.Entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "image_emotions", schema = "neuralart_db")
-public class ImageEmotionsEntity {
+public class ImageEmotionsEntity implements Serializable {
     private int id;
     private int artisticCount;
     private int beautifulCount;
