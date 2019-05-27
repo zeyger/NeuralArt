@@ -1,12 +1,13 @@
-package DAL;
+package DAL.Entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "result_images", schema = "neuralart_db")
-public class ResultImagesEntity {
+public class ResultImagesEntity implements Serializable {
     private int id;
     private byte privateStatus;
     private java.util.Date creationDate;
@@ -93,7 +94,7 @@ public class ResultImagesEntity {
         this.contextImagesByContextImage = contextImagesByContextImage;
     }
 
-    @OneToMany(mappedBy = "resultImagesByImage")
+    @OneToMany(mappedBy = "resultImagesByImage", cascade=CascadeType.ALL)
     public Collection<ImageEmotionsEntity> getImageEmotionsById() {
         return imageEmotionsById;
     }

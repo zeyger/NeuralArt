@@ -1,13 +1,14 @@
-package DAL;
+package DAL.Entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "original_images", schema = "neuralart_db")
-public class OriginalImagesEntity {
+@Table(name = "context_images", schema = "neuralart_db")
+public class ContextImagesEntity implements Serializable {
     private int id;
     private byte[] image;
     private Collection<ResultImagesEntity> resultImagesById;
@@ -24,7 +25,8 @@ public class OriginalImagesEntity {
     }
 
     @Basic
-    @Column(name = "image", columnDefinition = "MEDIUMBLOB")
+
+    @Column(name = "image",  columnDefinition = "MEDIUMBLOB")
     public byte[] getImage() {
         return image;
     }
@@ -37,7 +39,7 @@ public class OriginalImagesEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OriginalImagesEntity that = (OriginalImagesEntity) o;
+        ContextImagesEntity that = (ContextImagesEntity) o;
         return id == that.id &&
                 Arrays.equals(image, that.image);
     }
@@ -49,7 +51,7 @@ public class OriginalImagesEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "originalImagesByOriginalImage")
+    @OneToMany(mappedBy = "contextImagesByContextImage", cascade=CascadeType.ALL)
     public Collection<ResultImagesEntity> getResultImagesById() {
         return resultImagesById;
     }

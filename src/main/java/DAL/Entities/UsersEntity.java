@@ -1,12 +1,13 @@
-package DAL;
+package DAL.Entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Collection;
 
 @Entity
 @Table(name = "users", schema = "neuralart_db")
-public class UsersEntity {
+public class UsersEntity implements Serializable {
     private int id;
     private String cookie;
     private java.util.Date cookieCreationDate;
@@ -58,7 +59,7 @@ public class UsersEntity {
         return Objects.hash(id, cookie, cookieCreationDate);
     }
 
-    @OneToMany(mappedBy = "usersByUser")
+    @OneToMany(mappedBy = "usersByUser", cascade=CascadeType.ALL)
     public Collection<ResultImagesEntity> getResultImagesById() {
         return resultImagesById;
     }

@@ -9,11 +9,11 @@
     <property name="connection.password">admin</property>
     <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>
-    <mapping class="DAL.ContextImagesEntity"/>
-    <mapping class="DAL.ImageEmotionsEntity"/>
-    <mapping class="DAL.OriginalImagesEntity"/>
-    <mapping class="DAL.ResultImagesEntity"/>
-    <mapping class="DAL.UsersEntity"/>
+    <mapping class="DAL.Entities.ContextImagesEntity"/>
+    <mapping class="DAL.Entities.ImageEmotionsEntity"/>
+    <mapping class="DAL.Entities.OriginalImagesEntity"/>
+    <mapping class="DAL.Entities.ResultImagesEntity"/>
+    <mapping class="DAL.Entities.UsersEntity"/>
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->

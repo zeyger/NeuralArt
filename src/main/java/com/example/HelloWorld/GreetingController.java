@@ -1,7 +1,8 @@
 package com.example.HelloWorld;
 
+import DAL.Entities.*;
+import DAL.DAO.*;
 import utils.HibernateUtil;
-import DAL.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,46 +20,29 @@ public class GreetingController {
     ) {
         model.addAttribute("name", "Hello, World!");
 
-
-        //---This code is creating new user in DB---
-        /*
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        UsersEntity UsersEntity = new UsersEntity();
-        UsersEntity.setEmail("vasyaPupkin@gmail.com");
-        UsersEntity.setPassword("12345");
-        UsersEntity.setDefaultPrivate((byte)1);
-        session.save(UsersEntity);
-        session.getTransaction().commit();
-        session.close();
-        */
-
         //---This code is creating new records in DB---
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-
+        AbstractHibernateDAO DAO = new ContextImagesDAO();
         ContextImagesEntity ContextImagesEntity = new ContextImagesEntity();
         byte [] b = {1, 2, 3};
         ContextImagesEntity.setImage(b);
-        session.save(ContextImagesEntity);
+        DAO.create(ContextImagesEntity);
 
+        DAO = new OriginalImagesDAO();
         OriginalImagesEntity OriginalImagesEntity = new OriginalImagesEntity();
         OriginalImagesEntity.setImage(b);
-        session.save(OriginalImagesEntity);
+        DAO.create(OriginalImagesEntity);
 
+        DAO = new UsersDAO();
         UsersEntity UsersEntity = new UsersEntity();
         Cookie cookieName = new Cookie("neuralartId", UUID.randomUUID().toString());
         String cookie = cookieName.toString();
         Date cookieDate = new Date();
         UsersEntity.setCookie(cookie);
         UsersEntity.setCookieCreationDate(cookieDate);
-        session.save(UsersEntity);
-        session.getTransaction().commit();
-        session.close();
+        DAO.create(UsersEntity);
 
-        Session session2 = HibernateUtil.getSessionFactory().openSession();
-        session2.beginTransaction();
+        DAO = new ResultImagesDAO();
         ResultImagesEntity ResultImagesEntity = new ResultImagesEntity();
         ResultImagesEntity.setOriginalImagesByOriginalImage(OriginalImagesEntity);
         ResultImagesEntity.setContextImagesByContextImage(ContextImagesEntity);
@@ -68,13 +52,9 @@ public class GreetingController {
         ResultImagesEntity.setPrivateStatus((byte)1);
         ResultImagesEntity.setResultImage(b);
 
-        session2.save(ResultImagesEntity);
+        DAO.create(ResultImagesEntity);
 
-        session2.getTransaction().commit();
-        session2.close();
-
-        Session session3 = HibernateUtil.getSessionFactory().openSession();
-        session3.beginTransaction();
+        DAO = new ImageEmotionsDAO();
         ImageEmotionsEntity ImageEmotionsEntity = new ImageEmotionsEntity();
         ImageEmotionsEntity.setResultImagesByImage(ResultImagesEntity);
         ImageEmotionsEntity.setArtisticCount(1);
@@ -83,11 +63,11 @@ public class GreetingController {
         ImageEmotionsEntity.setSadCount(3);
         ImageEmotionsEntity.setScaryCount(0);
         ImageEmotionsEntity.setUglyCount(1);
+        DAO.create(ImageEmotionsEntity);
 
-        session3.save(ImageEmotionsEntity);
-
-        session3.getTransaction().commit();
-        session3.close();
+        //This code is delete User by id
+        DAO = new ResultImagesDAO();
+        DAO.deleteById(12);
 
         return "greeting";
     }
