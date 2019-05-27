@@ -1,6 +1,5 @@
 package common;
 
-
 import DTO.JobDecoderDTO;
 import DTO.JobEncoderDTO;
 import com.google.gson.Gson;
@@ -30,6 +29,8 @@ public class JobEncoderDecoder {
      */
     public static JobDecoderDTO decode(String jsonString) {
         JobDecoderDTO jobDecoderDTO = gson.fromJson(jsonString, JobDecoderDTO.class);
-        return jobDecoderDTO;  // result - объект с полями int jobId, byte[] resultImage
+        byte[] bytesImage = Base64.getDecoder().decode(jobDecoderDTO.getResultImage());
+        jobDecoderDTO.setBytesResultImage(bytesImage);
+        return jobDecoderDTO;  // result - объект с полями int jobId, byte[] resultImage, string b64Image
     }
 }
