@@ -17,7 +17,7 @@ public class QueuePuller {
 
         Runnable task1 = () -> {
             Queue queue = new Queue();
-            while (queue.lenResult() != 0) {
+            while (queue.lenResult() > 0) {
                 String result = queue.popResult();
                 JobDecoderDTO jobDecoderDTO = JobEncoderDecoder.decode(result);
                 int jobId = jobDecoderDTO.getJobId();
