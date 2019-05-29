@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
-import DAL.Entities.ResultImagesEntity;
-import DAL.Entities.UsersEntity;
+import ru.sstu.se20.DAL.Entities.ResultImagesEntity;
+import ru.sstu.se20.DAL.Entities.UsersEntity;
 import org.hibernate.Query;
 import ru.sstu.se20.utils.HibernateUtil;
 import java.util.ArrayList;

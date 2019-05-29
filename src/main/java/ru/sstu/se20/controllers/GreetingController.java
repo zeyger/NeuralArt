@@ -66,7 +66,7 @@ public class GreetingController {
 
         //This code is delete User by id
         DAO = new UsersDAO();
-        DAO.deleteById(19);
+        DAO.deleteById(14);
 
         return "greeting";
     }
