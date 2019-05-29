@@ -1,8 +1,11 @@
 package ru.sstu.se20.DAL.DAO;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
+import ru.sstu.se20.DAL.Entities.ResultImagesEntity;
+import ru.sstu.se20.DAL.Entities.UsersEntity;
 import org.hibernate.Query;
 import ru.sstu.se20.utils.HibernateUtil;
 import java.util.ArrayList;
@@ -72,6 +75,15 @@ public abstract class AbstractHibernateDAO <T extends Serializable> implements I
         if (del != null)
         {
             session.delete(del);
+            if(clazz==UsersEntity.class)
+            {
+                UsersEntity User;
+                User = (UsersEntity)del;
+                for (ResultImagesEntity resultImage: User.getResultImagesById())
+                {
+                    resultImage.setUsersByUser(null);
+                }
+            }
         }
 
         session.getTransaction().commit();
