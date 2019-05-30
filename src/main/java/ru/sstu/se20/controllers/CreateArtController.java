@@ -67,7 +67,7 @@ public class CreateArtController {
         sessions.beginTransaction();
 
         UsersEntity UsersEntity = new UsersEntity();
-        String cookie = cookieName.toString();
+        String cookie = cookieName.getValue();
         Date cookieDate = new Date();
         UsersEntity.setCookie(cookie);
         UsersEntity.setCookieCreationDate(cookieDate);
