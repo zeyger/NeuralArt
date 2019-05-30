@@ -35,7 +35,7 @@ public class GreetingController {
         DAO = new UsersDAO();
         UsersEntity UsersEntity = new UsersEntity();
         Cookie cookieName = new Cookie("neuralartId", UUID.randomUUID().toString());
-        String cookie = cookieName.toString();
+        String cookie = cookieName.getValue();
         Date cookieDate = new Date();
         UsersEntity.setCookie(cookie);
         UsersEntity.setCookieCreationDate(cookieDate);
@@ -64,9 +64,11 @@ public class GreetingController {
         ImageEmotionsEntity.setUglyCount(1);
         DAO.create(ImageEmotionsEntity);
 
-        //This code is delete User by id
+        //This code is select User by cookie
         DAO = new UsersDAO();
-        DAO.deleteById(16);
+        cookie = "1a91132c-0f0f-4a51-9af0-b1ea78c06592";
+        UsersEntity findUser = ((UsersDAO) DAO).getByCookie(cookie);
+
 
         return "greeting";
     }
