@@ -47,7 +47,7 @@ public class GreetingController {
         ResultImagesEntity.setContextImagesByContextImage(ContextImagesEntity);
         Date date = new Date();
         ResultImagesEntity.setCreationDate(date);
-        //ResultImagesEntity.setUsersByUser(UsersEntity);
+        ResultImagesEntity.setUsersByUser(UsersEntity);
         ResultImagesEntity.setPrivateStatus((byte)1);
         ResultImagesEntity.setResultImage(b);
 
@@ -66,7 +66,7 @@ public class GreetingController {
 
         //This code is delete User by id
         DAO = new UsersDAO();
-        DAO.deleteById(14);
+        DAO.deleteById(16);
 
         return "greeting";
     }
