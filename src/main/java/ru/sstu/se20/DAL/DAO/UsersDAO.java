@@ -1,5 +1,6 @@
 package ru.sstu.se20.DAL.DAO;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import ru.sstu.se20.DAL.Entities.ResultImagesEntity;
 import ru.sstu.se20.DAL.Entities.UsersEntity;
@@ -13,6 +14,22 @@ public class UsersDAO extends AbstractHibernateDAO <UsersEntity> implements IUse
         super();
 
         setClazz(UsersEntity.class);
+    }
+
+
+    public final UsersEntity getByCookie(final String cookie) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query query= session.createQuery("from UsersEntity where cookie=:cookie");
+        query.setParameter("cookie", cookie);
+        UsersEntity usersEntity = (UsersEntity) query.uniqueResult();
+
+        session.getTransaction().commit();
+        if (session.isOpen()) {
+            session.close();
+        }
+        return usersEntity;
     }
 
     @Override
