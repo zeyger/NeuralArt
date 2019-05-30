@@ -68,22 +68,13 @@ public abstract class AbstractHibernateDAO <T extends Serializable> implements I
     }
 
     @Override
-    public final void deleteById(final int entityId) {
+    public void deleteById(final int entityId) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         T del = getById(entityId);
         if (del != null)
         {
             session.delete(del);
-            if(clazz==UsersEntity.class)
-            {
-                UsersEntity User;
-                User = (UsersEntity)del;
-                for (ResultImagesEntity resultImage: User.getResultImagesById())
-                {
-                    resultImage.setUsersByUser(null);
-                }
-            }
         }
 
         session.getTransaction().commit();
