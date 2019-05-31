@@ -59,7 +59,7 @@ public class UsersEntity implements Serializable {
         return Objects.hash(id, cookie, cookieCreationDate);
     }
 
-    @OneToMany(mappedBy = "usersByUser")
+    @OneToMany(mappedBy = "usersByUser", fetch = FetchType.EAGER)
     public Collection<ResultImagesEntity> getResultImagesById() {
         return resultImagesById;
     }
