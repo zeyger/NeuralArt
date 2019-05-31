@@ -6,7 +6,7 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/neuralart_db?serverTimezone=UTC</property>
     <property name="connection.username">root</property>
-    <property name="connection.password">Rfhtkjd123</property>
+    <property name="connection.password">YOUR_PASSWORD</property>
     <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>
     <mapping class="ru.sstu.se20.DAL.Entities.ContextImagesEntity"/>
