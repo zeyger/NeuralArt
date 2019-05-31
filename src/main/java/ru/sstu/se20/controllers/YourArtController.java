@@ -5,16 +5,16 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.context.WebContext;
 import ru.sstu.se20.DAL.DAO.ResultImagesDAO;
+import ru.sstu.se20.DAL.DAO.UsersDAO;
 import ru.sstu.se20.DAL.Entities.ResultImagesEntity;
+import ru.sstu.se20.DAL.Entities.UsersEntity;
 import ru.sstu.se20.DTO.YourArtDTO;
+import ru.sstu.se20.common.ControllerUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 public class YourArtController {
@@ -29,8 +29,11 @@ public class YourArtController {
             cookieName = new Cookie("neuralartId", UUID.randomUUID().toString());
             response.addCookie(cookieName);
         }
-        ResultImagesDAO dao = new ResultImagesDAO();
-        List<ResultImagesEntity> resultImages = dao.getAll();
+        UsersEntity user = ControllerUtils.getUser(cookieName.getValue());
+        List<ResultImagesEntity> resultImages = new ArrayList<>();
+        if (user.getResultImagesById() != null) {
+            resultImages = new ArrayList<>(user.getResultImagesById());
+        }
         List<YourArtDTO> dto = new ArrayList<>();
 
         for (ResultImagesEntity image : resultImages) {

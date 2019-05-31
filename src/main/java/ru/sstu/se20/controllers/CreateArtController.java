@@ -1,6 +1,7 @@
 package ru.sstu.se20.controllers;
 
 
+import ru.sstu.se20.DAL.DAO.UsersDAO;
 import ru.sstu.se20.DAL.Entities.ContextImagesEntity;
 import ru.sstu.se20.DAL.Entities.OriginalImagesEntity;
 import ru.sstu.se20.DAL.Entities.ResultImagesEntity;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import ru.sstu.se20.common.ControllerUtils;
 import ru.sstu.se20.utils.HibernateUtil;
 import ru.sstu.se20.common.JobEncoderDecoder;
 import org.hibernate.Session;
@@ -63,17 +65,8 @@ public class CreateArtController {
         session2.getTransaction().commit();
         session2.close();
 
-        Session sessions = HibernateUtil.getSessionFactory().openSession();
-        sessions.beginTransaction();
-
-        UsersEntity UsersEntity = new UsersEntity();
         String cookie = cookieName.getValue();
-        Date cookieDate = new Date();
-        UsersEntity.setCookie(cookie);
-        UsersEntity.setCookieCreationDate(cookieDate);
-        sessions.save(UsersEntity);
-        sessions.getTransaction().commit();
-        sessions.close();
+        UsersEntity user = ControllerUtils.getUser(cookie);
 
         //Write empty result image
         Session session3 = HibernateUtil.getSessionFactory().openSession();
@@ -83,7 +76,7 @@ public class CreateArtController {
         ResultImagesEntity.setContextImagesByContextImage(ContextImagesEntity);
         Date date = new Date();
         ResultImagesEntity.setCreationDate(date);
-        ResultImagesEntity.setUsersByUser(UsersEntity);
+        ResultImagesEntity.setUsersByUser(user);
         ResultImagesEntity.setPrivateStatus((byte)1);
         ResultImagesEntity.setResultImage(null);
         session3.save(ResultImagesEntity);
@@ -96,7 +89,7 @@ public class CreateArtController {
         Queue Queue = new Queue();
         Queue.putPending(uploadString);
 
-        return "uploadview";
+        return "redirect:/myarts";
     }
 
 }
