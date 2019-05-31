@@ -20,3 +20,4 @@
 /*/.classpath
 
 /target/
+src/main/resources/hibernate.cfg.xml
