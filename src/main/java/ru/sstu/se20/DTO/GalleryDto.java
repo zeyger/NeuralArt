@@ -34,6 +34,4 @@ public class GalleryDto {
     public int sadCount;
     public int scaryCount;
     public int uglyCount;
-//    private Collection<ImageEmotionsEntity> imageEmotionsById;
-//    private UsersEntity usersByUser;
 }

@@ -42,7 +42,6 @@ public class GalleryController {
                 uglyCount = emotion.getUglyCount();
             }
 
-            //String resultImage = "data:image/png;base64," + Base64.getEncoder().encodeToString(image.getResultImage());
             int id = image.getId();
             String resultImage = "data:image/png;base64," + Base64.getEncoder().encodeToString(image.getResultImage());
             java.util.Date creationDate = image.getCreationDate();
