@@ -4,8 +4,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.context.WebContext;
+import ru.sstu.se20.DAL.DAO.ImageEmotionsDAO;
 import ru.sstu.se20.DAL.DAO.ResultImagesDAO;
 import ru.sstu.se20.DAL.DAO.UsersDAO;
+import ru.sstu.se20.DAL.Entities.ImageEmotionsEntity;
 import ru.sstu.se20.DAL.Entities.ResultImagesEntity;
 import ru.sstu.se20.DAL.Entities.UsersEntity;
 import ru.sstu.se20.DTO.YourArtDTO;
@@ -44,12 +46,26 @@ public class YourArtController {
             else {
                 resultImage  = "data:image/png;base64," + Base64.getEncoder().encodeToString(image.getResultImage());
             }
+
+            //Take information about emotions from the database
+            int artisticCount = 0, beautifulCount = 0, funnyCount = 0, sadCount = 0, scaryCount = 0, uglyCount = 0;
+            ImageEmotionsDAO emotionsdao = new ImageEmotionsDAO();
+            Collection<ImageEmotionsEntity> emotions = image.getImageEmotionsById();
+            for (ImageEmotionsEntity emotion : emotions) {
+                artisticCount = emotion.getArtisticCount();
+                beautifulCount = emotion.getBeautifulCount();
+                funnyCount = emotion.getFunnyCount();
+                sadCount = emotion.getSadCount();
+                scaryCount = emotion.getScaryCount();
+                uglyCount = emotion.getUglyCount();
+            }
+
             int id = image.getId();
             byte privateStatus = image.getPrivateStatus();
             java.util.Date creationDate = image.getCreationDate();
             String originalImages = "data:image/png;base64," + Base64.getEncoder().encodeToString(image.getOriginalImagesByOriginalImage().getImage());
             String contextImages = "data:image/png;base64," + Base64.getEncoder().encodeToString(image.getContextImagesByContextImage().getImage());
-            dto.add(new YourArtDTO(id, privateStatus, creationDate, originalImages, contextImages, resultImage));
+            dto.add(new YourArtDTO(id, privateStatus, creationDate, originalImages, contextImages, resultImage, artisticCount, beautifulCount, funnyCount, sadCount, scaryCount,uglyCount));
         }
         model.addAttribute("images", dto);
         return "myarts";
