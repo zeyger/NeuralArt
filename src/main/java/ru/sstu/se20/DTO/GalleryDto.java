@@ -1,19 +1,15 @@
 package ru.sstu.se20.DTO;
 
-import ru.sstu.se20.DAL.Entities.ImageEmotionsEntity;
-
-import java.util.Collection;
 import java.util.Date;
 
-public class YourArtDTO {
+public class GalleryDto {
 
-    public YourArtDTO() {
+    public GalleryDto() {
 
     }
 
-    public YourArtDTO(int id, byte privateStatus, Date creationDate, String originalImages, String contextImages, String resultImage, int artisticCount, int beautifulCount, int funnyCount, int sadCount, int scaryCount, int uglyCount) {
+    public GalleryDto(int id, Date creationDate, String originalImages, String contextImages, String resultImage, int artisticCount, int beautifulCount, int funnyCount, int sadCount, int scaryCount, int uglyCount) {
         this.id = id;
-        this.privateStatus = privateStatus;
         this.creationDate = creationDate;
         this.originalImage = originalImages;
         this.contextImage = contextImages;
@@ -28,7 +24,6 @@ public class YourArtDTO {
     }
 
     public int id;
-    public byte privateStatus;
     public java.util.Date creationDate;
     public String originalImage;
     public String contextImage;

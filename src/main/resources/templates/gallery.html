@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Gallery</h2>
+<table>
+    <tr>
+        <th>id</th>
+        <th>creationDate</th>
+        <th>originalImage</th>
+        <th>contextImage</th>
+        <th>resultImage</th>
+    </tr>
+    <tr th:each="image : ${images}">
+        <td th:text="${image.id}"></td>
+        <td th:text="${image.creationDate}"></td>
+        <td><img th:src="${image.originalImage}" width="100" height="70"/></td>
+        <td><img th:src="${image.contextImage}" width="100" height="70"/></td>
+        <td><img th:src="${image.resultImage}" width="100" height="70"/></td>
+        <td th:text="${image.artisticCount}"></td>
+        <td th:text="${image.beautifulCount}"></td>
+        <td th:text="${image.funnyCount}"></td>
+        <td th:text="${image.sadCount}"></td>
+        <td th:text="${image.scaryCount}"></td>
+        <td th:text="${image.uglyCount}"></td>
+    </tr>
+</table>
+<!--    </div>-->
+</body>
+</html>

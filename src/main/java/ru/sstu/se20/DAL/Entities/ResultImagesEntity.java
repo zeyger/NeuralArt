@@ -94,7 +94,7 @@ public class ResultImagesEntity implements Serializable {
         this.contextImagesByContextImage = contextImagesByContextImage;
     }
 
-    @OneToMany(mappedBy = "resultImagesByImage", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "resultImagesByImage", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     public Collection<ImageEmotionsEntity> getImageEmotionsById() {
         return imageEmotionsById;
     }
