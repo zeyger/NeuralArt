@@ -9,6 +9,35 @@
 	
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 	<style>
+		.navbar-inverse {
+		background-color: #64CEC1;
+		border: 0;
+		}
+		.MainTextLi
+		{
+		margin-top: 20px;
+		margin-left: 30px;
+		width:200px;
+    display: inline;
+		}
+		.MainText
+		{
+		font-size: 22px;
+		color: white !important;
+		}
+		.MainText:hover
+		{
+		color: green !important;
+		cursor: pointer;
+		}
+		.navbar-nav
+		{
+		display: inline-block !important;
+		}
+		
+		
+		
+		
 		.Body2
 		{}
 		.Body
@@ -186,6 +215,23 @@ border: 1px solid #2BBDAB;
 </head>
 
 <body>
+	
+	
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="MainTextLi"><a class="MainText" href="gallery">Галерея</a></li>
+                    <li class="MainTextLi" style="text-decoration:underline;"><a class="MainText" href="">Создать</a></li>
+                    <li class="MainTextLi"><a class="MainText" href="myarts">Ваши загрузки</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+	
+	
+	
+	
 	<div class="Body">
 	<div class="container-fluid">
 <form action="/upload" method="post" enctype="multipart/form-data">
