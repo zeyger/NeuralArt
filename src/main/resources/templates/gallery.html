@@ -1,33 +1,237 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+	<link rel="stylesheet" href="https://googledrive.com/host/19cw7hVm6UfOTTn3-lJOulKgEynxr_kTy/style.css">
+<meta charset="utf-8">
+<title>Галерея</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<style>
+		.navbar-inverse {
+		background-color: #64CEC1;
+		border: 0;
+		}
+		.MainTextLi
+		{
+		margin-top: 20px;
+		margin-left: 30px;
+		width:200px;
+    display: inline;
+		}
+		.MainText
+		{
+		font-size: 22px;
+		color: white !important;
+		}
+		.MainText:hover
+		{
+		color: green !important;
+		cursor: pointer;
+		}
+		.navbar-nav
+		{
+		display: inline-block !important;
+		}
+		
+		
+		
+		.Body2
+		{}
+		.Body
+		{margin-top: 150px;		}
+		.OriginalImageBox
+		{
+			height: 300px;
+			margin-left: 20px;
+			margin-right: 20px;
+
+			background: #FCFCFC;
+			border: 1px solid #9A9A9A;
+			box-sizing: border-box;}
+		.ContentImage
+		{
+			height: 300px;
+			margin-left: 20px;
+			margin-right: 20px;
+
+			background: #D8D8D8;
+			border: 1px solid #9A9A9A;
+			box-sizing: border-box;}
+	
+  .FullBox {
+  float: left;
+	  margin: 25px;
+}
+	.ContentBox
+		{
+  display: inline-block;
+  border:  1px solid #15A08F;
+		}
+		.ImageBox
+		{
+  			display: inline-block;
+			margin: 2px;
+		}
+		.BigImageBox
+		{
+  			display: inline-block;
+			vertical-align: top;
+			height: 288px;
+			width: 288px;
+			object-fit: contain;
+		}
+		.BigImageBox2
+		{
+  			display: inline-block;
+			vertical-align: top;
+  			border:  1px solid #15A08F;
+		}
+		.SmallImageBox
+		{
+  			display: inline-block;
+			height: 142px;
+			width: 142px;
+			object-fit: contain;
+		}
+		.SmallImageBox2
+		{
+			height: 144px;
+			width: 144px;
+  			border:  1px solid #15A08F;
+			vertical-align: top;
+			margin-right:2px;
+		}
+		.SmallImageBox3
+		{
+  			display: inline-block;
+			height: 288px;
+			width: 144px;
+			vertical-align: top;
+		}
+		.SmallImageBox4
+		{
+			height: 144px;
+			width: 144px;
+  			border:  1px solid #15A08F;
+			vertical-align: top;
+			margin-top:2px;
+			margin-right:2px;
+		}
+		.DateButtonBox
+		{
+			margin: 5px;
+		}
+		.ContextBox
+		{
+			margin: 5px;
+		}
+		.PrivateButton
+		{
+  			display: inline-block;
+			align: right;
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: normal;
+	  		color: #15A08F;
+			float: right;
+			margin-right: -5px;
+		}
+		.DateBox
+		{
+  			display: inline-block;
+			font-family: Roboto;
+			font-style: normal;
+			font-weight: normal;
+	  		color: #15A08F;
+		}
+		.DoPrivatePublic
+		{
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+	  	color: #15A08F;
+			border-radius: 20px;
+		background-color: #ECF9F9;
+border: 1px solid #2BBDAB;
+		}
+		.EmotionBox
+		{
+  			border:  0px solid #15A08F;
+			width: 68px;
+			height: 50px;
+  			display: inline-block;
+			margin-top: 10px;
+		}
+		.EmotionBox2
+		{
+			margin-left: 2px;
+		}
+		.Emotion
+		{
+			width: 16px;
+			height: 100%;
+  			border:  0px solid #15A08F;
+  			display: inline-block;
+		}
+		.SmallEmotionImage
+		{
+			width: 45px;
+			height: 45px;
+  			border:  0px solid #15A08F;
+  			display: inline-block;
+			vertical-align: top;
+			object-fit: contain;
+		}
+	</style>
 </head>
+
 <body>
-<h2>Gallery</h2>
-<table>
-    <tr>
-        <th>id</th>
-        <th>creationDate</th>
-        <th>originalImage</th>
-        <th>contextImage</th>
-        <th>resultImage</th>
-    </tr>
-    <tr th:each="image : ${images}">
-        <td th:text="${image.id}"></td>
-        <td th:text="${image.creationDate}"></td>
-        <td><img th:src="${image.originalImage}" width="100" height="70"/></td>
-        <td><img th:src="${image.contextImage}" width="100" height="70"/></td>
-        <td><img th:src="${image.resultImage}" width="100" height="70"/></td>
-        <td th:text="${image.artisticCount}"></td>
-        <td th:text="${image.beautifulCount}"></td>
-        <td th:text="${image.funnyCount}"></td>
-        <td th:text="${image.sadCount}"></td>
-        <td th:text="${image.scaryCount}"></td>
-        <td th:text="${image.uglyCount}"></td>
-    </tr>
-</table>
-<!--    </div>-->
+	
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="MainTextLi" style="text-decoration:underline;"><a class="MainText" href="">Галерея</a></li>
+                    <li class="MainTextLi"><a class="MainText" href="createart">Создать</a></li>
+                    <li class="MainTextLi"><a class="MainText" href="myarts">Ваши загрузки</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+	
+	
+	<div class="Body">
+	<div class="container-fluid">
+            <div class="FullBox" th:each="image : ${images}">
+				<div class="ContentBox">
+					<div class="ImageBox">
+                <div class="BigImageBox2"><img class="BigImageBox" th:src="${image.resultImage}"/></div>
+						<div class="SmallImageBox3">
+                <div class="SmallImageBox2"><img class="SmallImageBox" th:src="${image.originalImage}"/></div>
+                <div class="SmallImageBox4"><img class="SmallImageBox" th:src="${image.contextImage}"/></div>
+							</div>
+						</div>
+					<div class="ContextBox">
+				<div class="EmotionBox2">
+                <div class="EmotionBox"><div class="Emotion" th:text="${image.artisticCount}"></div>
+					<img class="SmallEmotionImage" src="#"/></div>
+                <div class="EmotionBox"><div class="Emotion" th:text="${image.beautifulCount}"></div>
+					<img class="SmallEmotionImage" src="#"/></div>
+                <div class="EmotionBox"><div class="Emotion" th:text="${image.funnyCount}"></div>
+					<img class="SmallEmotionImage" src="#"/></div>
+                <div class="EmotionBox"><div class="Emotion" th:text="${image.sadCount}"></div>
+					<img class="SmallEmotionImage" src="#"/></div>
+                <div class="EmotionBox"><div class="Emotion" th:text="${image.scaryCount}"></div>
+					<img class="SmallEmotionImage" src="#"/></div>
+                <div class="EmotionBox"><div class="Emotion" th:text="${image.uglyCount}"></div>
+					<img class="SmallEmotionImage" src="#"/></div>
+					</div>
+					</div>
+				</div>
+            </div>
+		</div>
+		</div>
 </body>
 </html>
