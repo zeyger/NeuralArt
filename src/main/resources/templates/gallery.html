@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<link rel="stylesheet" href="https://googledrive.com/host/19cw7hVm6UfOTTn3-lJOulKgEynxr_kTy/style.css">
 <meta charset="utf-8">
 <title>Галерея</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -185,6 +184,45 @@ border: 1px solid #2BBDAB;
 			object-fit: contain;
 		}
 	</style>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			var a = document.querySelectorAll('.EmotionBox2'), b = [];
+			for (var i = 0; i < a.length; i++) {
+				b[i] = a[i].querySelectorAll('.EmotionBox2 .EmotionBox');
+				for (var j = 0; j < b[i].length; j++) {
+					var id = a[i].querySelector('.id').getAttribute('id');
+					b[i][j].addEventListener('click', emoteClickHandler(id, j));
+				}
+			}
+		}
+
+		function emoteClickHandler(i, j) {
+			var id = i, emote = j;
+			return function() {
+				$.ajax({
+					type: "POST",
+					url: "emotions",
+					data: "id=" + id + "&emotionIndex=" + emote,
+					success: function(json){
+						var ob = JSON.parse(json);
+						var id = ob.id;
+						var emotionIndex = ob.emotionIndex;
+						var count = ob.count;
+
+						var a = document.querySelectorAll('.EmotionBox2');
+						var b = [];
+						for (var i = 0; i < a.length; i++) {
+							if (a[i].querySelector('.id').getAttribute('id') == id) {
+								b = a[i].querySelectorAll('.Emotion');
+								b[emotionIndex].textContent = count;
+							}
+						}
+					}
+				});
+			}
+		}
+		</script>
 </head>
 
 <body>
@@ -215,6 +253,7 @@ border: 1px solid #2BBDAB;
 						</div>
 					<div class="ContextBox">
 				<div class="EmotionBox2">
+					<input class="id" hidden th:id="${image.id}" />
                 <div class="EmotionBox"><div class="Emotion" th:text="${image.artisticCount}"></div>
 					<img class="SmallEmotionImage" src="#"/></div>
                 <div class="EmotionBox"><div class="Emotion" th:text="${image.beautifulCount}"></div>
@@ -233,5 +272,7 @@ border: 1px solid #2BBDAB;
             </div>
 		</div>
 		</div>
+
+
 </body>
 </html>
