@@ -7,3 +7,6 @@
  <p align="center">
   <img src="http://www.imageup.ru/img94/3307409/pic1.jpg">
 </p>
+
+
+Стоить отметить важную деталь: сейчас оно работает как говно
